@@ -1,4 +1,4 @@
-# dcase2019-task5
+# DCASE 2019-task5
 This repository contains code to build models for [DCASE 2019 Challange-task5 (Urban sound tagging)](http://dcase.community/challenge2019/task-urban-sound-tagging). Some scripts for manipulating the dataset and evaluating the model were taken from [the baseline code](https://github.com/sonyc-project/urban-sound-tagging-baseline) provided by the challange orginzers.
 
 ## Task description
