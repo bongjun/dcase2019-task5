@@ -15,8 +15,42 @@ The goal is to predict whether each of 23 (fine-grained) or 8 (coarse grained) s
 ## Installation
 
 ## Preparation
+Firat, extract mel-spectrograms of audio files in `train` and `validate` directories of the challenge dataset. Download [the challenge dataset](https://zenodo.org/record/3233082#.XQKIRW9KiL4) and unzip `audio-dev.tar.gz` in your project directory.
+
+```shell
+python extract_mel.py YOUR_PROJECT_DIRECTORY/annotations.csv YOUR_PROJECT_DIRECTORY/data YOUR_PROJECT_DIRECTORY/mels
+```
+This will create `mels` directory and store a set of melspectrogram of training and valudation files in the directory.
 
 ## Training
+```shell
+python train.py YOUR_PROJECT_DIRECTORY/annotations.csv YOUR_PROJECT_DIRECTORY/urban_sound_tagging_baseline/dcase-ust-taxonomy.yaml YOUR_PROJECT_DIRECTORY/mels YOUR_PROJECT_DIRECTORY/checkpoints YOUR_PROJECT_DIRECTORY/validation_output
+```
+It will create `checkpoints` and `validation_output` directories. After the training is done, you will see a set of model checkpoints in `checkpoints` and a result csv file (`output_max.csv `) in the `validation_output` directory.
 
-## Testing
+## Evaluating models on the validation set.
+```shell
+python evaluate.py YOUR_PROJECT_DIRECTORY/annotations.csv YOUR_PROJECT_DIRECTORY/validation_output/output_max.csv YOUR_PROJECT_DIRECTORY/urban_sound_tagging_baseline/dcase-ust-taxonomy.yaml
+```
+
+It will report the performance of the best model on the validation set.
+
+## Generating the submission file
+
+#### Extracting mel-spectrograms of the evaluation set.
+Download [the challenge dataset](https://zenodo.org/record/3233082#.XQKIRW9KiL4) and unzip `audio-eval.tar.gz` in your project directory.
+
+```shell
+python eval_extract_mel.py YOUR_PROJECT_DIRECTORY/audio-eval YOUR_PROJECT_DIRECTORY/eval_mels
+```
+
+This will create `eval_mels` directory and store mel-spectrograms of all audio files in `audio-eval` directory.
+
+#### Testing your model and generate the submission file.
+```shell
+python gen_submission.py YOUR_PROJECT_DIRECTORY/annotations.csv YOUR_PROJECT_DIRECTORY/urban_sound_tagging_baseline/dcase-ust-taxonomy.yaml YOUR_PROJECT_DIRECTORY/eval_mels/ YOUR_PROJECT_DIRECTORY/checkpoints/ YOUR_PROJECT_DIRECTORY/submision_file/
+```
+This will create `submision_file` directory and store `output_max.csv` in the directory.
+
+
 
