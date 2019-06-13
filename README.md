@@ -12,6 +12,10 @@ The goal is to predict whether each of 23 (fine-grained) or 8 (coarse grained) s
 * While data augmentation and using exteranl datasets are allowed in this task, none of them was used in this submission. After the labels for evaluation set is released, I will apply simple data augmentation techinques just to see if they help.
 
 ## Installation
+You will need `Python3` and `PyTorch` to run the codes.   Install all the dependencies in your virtual envorinment (or conda):
+```shell
+pip install -r requirements.txt
+```
 
 ## Preparation
 Firat, extract mel-spectrograms of audio files in `train` and `validate` directories of the challenge dataset. Download [the challenge dataset](https://zenodo.org/record/3233082#.XQKIRW9KiL4) and unzip `audio-dev.tar.gz` in your project directory.
