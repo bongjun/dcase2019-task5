@@ -14,9 +14,44 @@ The goal is to predict whether each of 23 (fine-grained) or 8 (coarse grained) s
 * While data augmentation and using exteranl datasets are allowed in this task, none of them was used in this submission. After the labels for evaluation set is released, I will apply simple data augmentation techinques just to see if they help.
 
 ## Installation
-You will need `Python3` and `PyTorch` to run the codes.   Install all the dependencies in your virtual envorinment (or conda):
+You will need `Python3` to run the codes.
+
+* Clone this repository and enter it.
+
+```shell
+https://github.com/bongjun/dcase2019-task5.git
+cd dcase2019-task5
+```
+* Set up your Python virtual environment.
+
+```
+virtualenv --system-site-packages -p python3 ./dcase_venv
+source ./dcase_venv/bin/activate
+```
+
+* Install python packages in your virtual envorinment (or conda):
 ```shell
 pip install -r requirements.txt
+```
+
+* Install PyTorch
+Find the correct install command for your operating system and version of python [here](https://pytorch.org/)
+
+* Download the data
+```shell
+mkdir -p data
+pushd data
+wget https://zenodo.org/record/3233082/files/annotations-dev.csv?download=1
+wget https://zenodo.org/record/3233082/files/audio-dev.tar.gz?download=1
+wget https://zenodo.org/record/3233082/files/dcase-ust-taxonomy.yaml?download=1
+wget https://zenodo.org/record/3233082/files/audio-eval.tar.gz?download=1
+popd
+```
+
+* Extracting the files
+```shell
+tar -xvzf data/audio-dev.tar.gz
+tar -xvzf data/audio-eval.tar.gz
 ```
 
 ## Preparation
