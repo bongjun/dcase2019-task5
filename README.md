@@ -55,7 +55,7 @@ popd
 Firat, extract mel-spectrograms of audio files in `train` and `validate` directories of the challenge dataset.
 
 ```shell
-python extract_mel.py CURRENT_DIR/data/annotations-dev.csv CURRENT_DIR/data/ PROJECT_DIR/mels
+python extract_mel.py CURRENT_DIR/data/annotations-dev.csv CURRENT_DIR/data/ CURRENT_DIR/mels
 ```
 This will create `mels` directory and store a set of melspectrogram of training and valudation files in the directory.
 
