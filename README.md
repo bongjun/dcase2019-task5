@@ -84,9 +84,29 @@ This will create `eval_mels` directory and store mel-spectrograms of all audio f
 
 #### Testing your model and generate the submission file.
 ```shell
-python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints submision_file
+python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints submision_file1
 ```
 This will create `submision_file` directory and store `output_max.csv` in the directory.
 
+## Model 2
+```shell
+python train.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints2 validation_output2 --learning_rate=1e-3
+```
+
+```shell
+python evaluate.py data/annotations-dev.csv validation_output2/output_max.csv data/dcase-ust-taxonomy.yaml```
+
+```shell
+python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints2 submision_file2
+```
+
+## Ensemble (model1+model2)
+```shell
+python evaluate_ensemble.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints checkpoints2 validation_output_ensemble
+```
+
+```shell
+python gen_submission_ensemble.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints checkpoints2 submision_file3
+```
 
 
