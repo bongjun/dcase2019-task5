@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 Find the correct install command for your operating system and version of python [here](https://pytorch.org/)
 
-* Download the data
+* Download the dataset and extracting the files.
 ```shell
 mkdir -p data
 pushd data
@@ -46,13 +46,9 @@ wget https://zenodo.org/record/3233082/files/annotations-dev.csv
 wget https://zenodo.org/record/3233082/files/audio-dev.tar.gz
 wget https://zenodo.org/record/3233082/files/dcase-ust-taxonomy.yaml
 wget https://zenodo.org/record/3233082/files/audio-eval.tar.gz
+tar -xvzf audio-dev.tar.gz
+tar -xvzf audio-eval.tar.gz
 popd
-```
-
-* Extracting the files
-```shell
-tar -xvzf data/audio-dev.tar.gz
-tar -xvzf data/audio-eval.tar.gz
 ```
 
 ## Preparation
