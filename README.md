@@ -19,7 +19,7 @@ You will need `Python3` to run the codes.
 * Clone this repository and enter it.
 
 ```shell
-https://github.com/bongjun/dcase2019-task5.git
+git clone https://github.com/bongjun/dcase2019-task5.git
 cd dcase2019-task5
 ```
 * Set up your Python virtual environment.
