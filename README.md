@@ -35,6 +35,7 @@ pip install -r requirements.txt
 ```
 
 * Install PyTorch
+
 Find the correct install command for your operating system and version of python [here](https://pytorch.org/)
 
 * Download the data
