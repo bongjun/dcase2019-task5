@@ -95,26 +95,31 @@ Now you've just trained and tested the first model. You can build the second and
 ```shell
 python train.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints2 validation_output2 --learning_rate=1e-3
 ```
+It will create `checkpoints2` and `validation_output2` directories. After the training is done, you will see a set of model checkpoints in `checkpoints2` and a result csv file (`output_max.csv `) in the `validation_output2` directory.
 
-#### Evaluting on validation set
+#### Evaluating on validation set
 ```shell
 python evaluate.py data/annotations-dev.csv validation_output2/output_max.csv data/dcase-ust-taxonomy.yaml
 ```
+It will report the performance of the best model on the validation set.
 
 #### Generate the submission file for the model2
 
 ```shell
 python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints2 submision_file2
 ```
+This will create `submision_file2` directory and store `output_max.csv` in the directory.
 
 ## The ensemble model (model#1 + model#2)
 #### Evaluating on validation set
 ```shell
 python evaluate_ensemble.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints checkpoints2 validation_output_ensemble
 ```
+It will report the performance of the ensemble model on the validation set.
 
 #### Generate the submission file for the ensemble model (model3)
 ```shell
 python gen_submission_ensemble.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints checkpoints2 submision_file3
 ```
+This will create `submision_file3` directory and store `output_max.csv` in the directory.
 
