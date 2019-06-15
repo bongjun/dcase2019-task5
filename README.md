@@ -55,19 +55,19 @@ popd
 Firat, extract mel-spectrograms of audio files in `train` and `validate` directories of the challenge dataset.
 
 ```shell
-python extract_mel.py CURRENT_DIR/data/annotations-dev.csv CURRENT_DIR/data/ CURRENT_DIR/mels
+python extract_mel.py data/annotations-dev.csv data/ mels/
 ```
 This will create `mels` directory and store a set of melspectrogram of training and valudation files in the directory.
 
 ## Training
 ```shell
-python train.py CURRENT_DIR/data/annotations-dev.csv CURRENT_DIR/data/dcase-ust-taxonomy.yaml CURRENT_DIR/mels CURRENT_DIR/checkpoints CURRENT_DIR/validation_output
+python train.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels/ checkpoints/ validation_output/
 ```
 It will create `checkpoints` and `validation_output` directories. After the training is done, you will see a set of model checkpoints in `checkpoints` and a result csv file (`output_max.csv `) in the `validation_output` directory.
 
 ## Evaluating models on the validation set.
 ```shell
-python evaluate.py CURRENT_DIR/data/annotations-dev.csv CURRENT_DIR/validation_output/output_max.csv CURRENT_DIR/data/dcase-ust-taxonomy.yaml
+python evaluate.py data/annotations-dev.csv validation_output/output_max.csv data/dcase-ust-taxonomy.yaml
 ```
 
 It will report the performance of the best model on the validation set.
@@ -77,14 +77,14 @@ It will report the performance of the best model on the validation set.
 #### Extracting mel-spectrograms of the evaluation set.
 
 ```shell
-python eval_extract_mel.py CURRENT_DIR/data/audio-eval CURRENT_DIR/eval_mels
+python eval_extract_mel.py data/audio-eval eval_mels/
 ```
 
 This will create `eval_mels` directory and store mel-spectrograms of all audio files in `audio-eval` directory.
 
 #### Testing your model and generate the submission file.
 ```shell
-python gen_submission.py CURRENT_DIR/data/annotations-dev.csv CURRENT_DIR/data/dcase-ust-taxonomy.yaml CURRENT_DIR/eval_mels/ CURRENT_DIR/checkpoints/ CURRENT_DIR/submision_file/
+python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels/ checkpoints/ submision_file/
 ```
 This will create `submision_file` directory and store `output_max.csv` in the directory.
 
