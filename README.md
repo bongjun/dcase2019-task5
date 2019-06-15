@@ -1,17 +1,17 @@
 # DCASE 2019-task5
 This repository contains code to build models for [DCASE 2019 Challange-task5 (Urban sound tagging)](http://dcase.community/challenge2019/task-urban-sound-tagging).
-* Some scripts for manipulating the dataset and evaluating the model were taken from [the baseline code](https://github.com/sonyc-project/urban-sound-tagging-baseline) provided by the challange orginzers.
+* Some scripts for manipulating the dataset and evaluating the model were taken from [the baseline code](https://github.com/sonyc-project/urban-sound-tagging-baseline) provided by the challenge organizers.
 * The feature extraction codes (`vggish_utils/`) are from the repository of [VGGish model](https://github.com/tensorflow/models/tree/master/research/audioset).
 
 ## Task description
-The goal is to predict whether each of 23 (fine-grained) or 8 (coarse grained) sources of noise pollution is present in a 10-second recording. This is a multi-label and multi-class classification probelem. **My model only works for the 8 coarse-grained labels:**
+The goal is to predict whether each of 23 (fine-grained) or 8 (coarse grained) sources of noise pollution is present in a 10-second recording. This is a multi-label and multi-class classification problem. **My model only works for the 8 coarse-grained labels:**
 * Classes: engine, machinery-impact, non-machinery-impact, powered-saw, alert-signal, music, human-voice, and dog.
 
 ## Model description
-* a CNN-based model: 6 convolutional layers +  3 fully-connceted layers
+* a CNN-based model: 6 convolutional layers +  3 fully-connected layers
 * Transfer learning from a part of [VGGish model](https://github.com/tensorflow/models/tree/master/research/audioset)
 * It takes a mel-spectrogram of 10-second recording and outputs scores which can be interpreted as probabilities of each class being present in the recording.
-* While data augmentation and using exteranl datasets are allowed in this task, none of them was used in this submission. After the labels for evaluation set is released, I will apply simple data augmentation techinques just to see if they help.
+* While data augmentation and using external datasets are allowed in this task, none of them was used in this submission. After the labels for evaluation set is released, I will apply simple data augmentation techniques just to see if they help.
 
 ## Installation
 You will need `Python3` to run the codes.
@@ -29,7 +29,7 @@ virtualenv --system-site-packages -p python3 ./dcase_venv
 source ./dcase_venv/bin/activate
 ```
 
-* Install python packages in your virtual envorinment (or conda):
+* Install python packages in your virtual environment (or conda):
 ```shell
 pip install -r requirements.txt
 ```
@@ -59,20 +59,20 @@ python extract_mel.py data/annotations-dev.csv data mels
 ```
 This will create `mels` directory and store a set of melspectrogram of training and valudation files in the directory.
 
-## Training
+## Training the first model (model#1)
 ```shell
 python train.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints validation_output
 ```
 It will create `checkpoints` and `validation_output` directories. After the training is done, you will see a set of model checkpoints in `checkpoints` and a result csv file (`output_max.csv `) in the `validation_output` directory.
 
-## Evaluating models on the validation set.
+## Evaluating model#1 on the validation set.
 ```shell
 python evaluate.py data/annotations-dev.csv validation_output/output_max.csv data/dcase-ust-taxonomy.yaml
 ```
 
 It will report the performance of the best model on the validation set.
 
-## Generating the submission file
+## Generating the submission file for model#1
 
 #### Extracting mel-spectrograms of the evaluation set.
 
@@ -88,7 +88,9 @@ python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml e
 ```
 This will create `submision_file` directory and store `output_max.csv` in the directory.
 
-## Build the model for the second submission system (model2)
+Now you've just trained and tested the first model. You can build the second and the thrid models in the similar way.
+
+## Build the second model (model#2)
 #### Training
 ```shell
 python train.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints2 validation_output2 --learning_rate=1e-3
@@ -105,8 +107,8 @@ python evaluate.py data/annotations-dev.csv validation_output2/output_max.csv da
 python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints2 submision_file2
 ```
 
-## Build the ensemble model (model1 + model2) for the third submission system
-#### Evaluting on validation set
+## The ensemble model (model#1 + model#2)
+#### Evaluating on validation set
 ```shell
 python evaluate_ensemble.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints checkpoints2 validation_output_ensemble
 ```
