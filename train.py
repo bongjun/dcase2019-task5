@@ -164,7 +164,6 @@ def train(annotation_path, taxonomy_path, mel_dir, models_dir, output_dir,
 
 	coarse_target_list = get_file_targets(annotation_data, coarse_target_labels)
 	train_file_idxs, test_file_idxs = get_subset_split(annotation_data)
-	train_file_idxs, test_file_idxs = get_subset_split(annotation_data)
 
 	target_list = coarse_target_list
 	labels = coarse_target_labels
