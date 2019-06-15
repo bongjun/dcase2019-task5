@@ -42,10 +42,10 @@ Find the correct install command for your operating system and version of python
 ```shell
 mkdir -p data
 pushd data
-wget https://zenodo.org/record/3233082/files/annotations-dev.csv?download=1
-wget https://zenodo.org/record/3233082/files/audio-dev.tar.gz?download=1
-wget https://zenodo.org/record/3233082/files/dcase-ust-taxonomy.yaml?download=1
-wget https://zenodo.org/record/3233082/files/audio-eval.tar.gz?download=1
+wget https://zenodo.org/record/3233082/files/annotations-dev.csv
+wget https://zenodo.org/record/3233082/files/audio-dev.tar.gz
+wget https://zenodo.org/record/3233082/files/dcase-ust-taxonomy.yaml
+wget https://zenodo.org/record/3233082/files/audio-eval.tar.gz
 popd
 ```
 
