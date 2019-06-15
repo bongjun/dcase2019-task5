@@ -52,7 +52,7 @@ popd
 ```
 
 ## Preparation
-Firat, extract mel-spectrograms of audio files in `train` and `validate` directories of the challenge dataset.
+Firat, extract mel-spectrograms of audio files in `data/train` and `data/validate` directories of the challenge dataset.
 
 ```shell
 python extract_mel.py data/annotations-dev.csv data mels
@@ -80,7 +80,7 @@ It will report the performance of the best model on the validation set.
 python eval_extract_mel.py data/audio-eval eval_mels
 ```
 
-This will create `eval_mels` directory and store mel-spectrograms of all audio files in `audio-eval` directory.
+This will create `eval_mels` directory and store mel-spectrograms of all audio files in `data/audio-eval` directory.
 
 #### Testing your model and generate the submission file.
 ```shell
