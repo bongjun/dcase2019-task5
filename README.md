@@ -88,25 +88,31 @@ python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml e
 ```
 This will create `submision_file` directory and store `output_max.csv` in the directory.
 
-## Model 2
+## Build the model for the second submission system (model2)
+#### Training
 ```shell
 python train.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints2 validation_output2 --learning_rate=1e-3
 ```
 
+#### Evaluting on validation set
 ```shell
-python evaluate.py data/annotations-dev.csv validation_output2/output_max.csv data/dcase-ust-taxonomy.yaml```
+python evaluate.py data/annotations-dev.csv validation_output2/output_max.csv data/dcase-ust-taxonomy.yaml
+```
+
+#### Generate the submission file for the model2
 
 ```shell
 python gen_submission.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints2 submision_file2
 ```
 
-## Ensemble (model1+model2)
+## Build the ensemble model (model1 + model2) for the third submission system
+#### Evaluting on validation set
 ```shell
 python evaluate_ensemble.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml mels checkpoints checkpoints2 validation_output_ensemble
 ```
 
+#### Generate the submission file for the ensemble model (model3)
 ```shell
 python gen_submission_ensemble.py data/annotations-dev.csv data/dcase-ust-taxonomy.yaml eval_mels checkpoints checkpoints2 submision_file3
 ```
-
 
