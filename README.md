@@ -52,7 +52,7 @@ popd
 ```
 
 ## Preparation
-Firat, extract mel-spectrograms of audio files in `train` and `validate` directories of the challenge dataset. Download [the challenge dataset](https://zenodo.org/record/3233082#.XQKIRW9KiL4) and unzip `audio-dev.tar.gz` in your project directory.
+Firat, extract mel-spectrograms of audio files in `train` and `validate` directories of the challenge dataset.
 
 ```shell
 python extract_mel.py CURRENT_DIR/data/annotations-dev.csv CURRENT_DIR/data/ PROJECT_DIR/mels
@@ -75,7 +75,6 @@ It will report the performance of the best model on the validation set.
 ## Generating the submission file
 
 #### Extracting mel-spectrograms of the evaluation set.
-Download [the challenge dataset](https://zenodo.org/record/3233082#.XQKIRW9KiL4) and unzip `audio-eval.tar.gz` in your project directory.
 
 ```shell
 python eval_extract_mel.py CURRENT_DIR/data/audio-eval CURRENT_DIR/eval_mels
