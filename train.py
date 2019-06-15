@@ -283,6 +283,11 @@ def train(annotation_path, taxonomy_path, mel_dir, models_dir, output_dir,
 			else:
 				patience_counter = 0
 
+		if patience_counter >= 10:
+			print('Training done!')
+			break
+
+
 
 
 if __name__ == '__main__':
