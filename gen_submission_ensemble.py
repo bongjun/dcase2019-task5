@@ -32,9 +32,6 @@ def evaluation(annotation_path, taxonomy_path, mel_dir,
 	with open(taxonomy_path, 'r') as f:
 		taxonomy = yaml.load(f, Loader=yaml.Loader)
 
-	
-	print('load mel spectrograms')	
-
 	file_list = [os.path.splitext(f)[0]+'.wav' for f in os.listdir(mel_dir) if 'npy' in f]
 	file_list.sort()
 

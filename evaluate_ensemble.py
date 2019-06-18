@@ -17,11 +17,7 @@ from model_architecture import MyCNN
 from train import load_mels
 
 def predict_ensemble(mel_list, test_file_idxs, model1, model2):
-	"""
-	Evaluate the output of a framewise classification model.
-	Modified predict_framewise() in classify.py
 
-	"""
 	y_pred = []
 
 	with torch.no_grad():

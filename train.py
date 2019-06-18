@@ -63,7 +63,7 @@ def prepare_data(train_file_idxs, test_file_idxs, mel_list,
 						   target_list):
 	
 	"""
-	modified prepare_framewise_data() in classify.py of baseline code
+	modified prepare_framewise_data() in classify.py of the baseline code
 	"""
 	X_train = []
 	y_train = []
@@ -93,8 +93,7 @@ def prepare_data(train_file_idxs, test_file_idxs, mel_list,
 
 def predict(mel_list, test_file_idxs, model):
 	"""
-	Evaluate the output of a framewise classification model.
-	Modified predict_framewise() in classify.py
+	Modified predict_framewise() in classify.py of the baseline code
 
 	"""
 	y_pred = []
@@ -144,8 +143,6 @@ def train(annotation_path, taxonomy_path, mel_dir, models_dir, output_dir,
 		batch_size, num_epochs, learning_rate, patience):
 	"""
 	This function is based on train_framewise() in the baseline code.
-	Parameters
-	----------
 
 	"""
 
