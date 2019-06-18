@@ -104,7 +104,11 @@ def predict(mel_list, test_file_idxs, model):
 
 			test_x = mel_list[idx]
 			test_x = np.reshape(test_x,(1,1,test_x.shape[0],test_x.shape[1]))
-			test_x = torch.from_numpy(test_x).cuda().float()
+
+			if torch.cuda.is_available():
+				test_x = torch.from_numpy(test_x).cuda().float()
+			else:
+				test_x = torch.from_numpy(test_x).float()
 			
 			model_output = model(test_x)
 

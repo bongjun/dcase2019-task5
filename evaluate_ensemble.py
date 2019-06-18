@@ -29,7 +29,11 @@ def predict_ensemble(mel_list, test_file_idxs, model1, model2):
 
 			test_x = mel_list[idx]
 			test_x = np.reshape(test_x,(1,1,test_x.shape[0],test_x.shape[1]))
-			test_x = torch.from_numpy(test_x).cuda().float()
+			
+			if torch.cuda.is_available():
+				test_x = torch.from_numpy(test_x).cuda().float()
+			else:
+				test_x = torch.from_numpy(test_x).float()
 			
 			model_output = (model1(test_x) + model2(test_x))/2
 
@@ -67,9 +71,12 @@ def evaluate_ensemble(annotation_path, taxonomy_path, mel_dir, models_dir1,
 	model_filename = model_list[np.argmin(val_loss)]
 
 	model1 = MyCNN()
-	model1.load_state_dict(torch.load(os.path.join(models_dir1, model_filename)))
 	if torch.cuda.is_available():
+		model1.load_state_dict(torch.load(os.path.join(models_dir1, model_filename)))
 		model1.cuda()
+	else:
+		model1.load_state_dict(torch.load(os.path.join(models_dir1, model_filename), map_location='cpu'))
+
 	model1.eval()
 
 	model_list = [f for f in os.listdir(models_dir2) if 'pth' in f]
@@ -77,9 +84,12 @@ def evaluate_ensemble(annotation_path, taxonomy_path, mel_dir, models_dir1,
 	model_filename = model_list[np.argmin(val_loss)]
 
 	model2 = MyCNN()
-	model2.load_state_dict(torch.load(os.path.join(models_dir2, model_filename)))
 	if torch.cuda.is_available():
+		model2.load_state_dict(torch.load(os.path.join(models_dir2, model_filename)))
 		model2.cuda()
+	else:
+		model2.load_state_dict(torch.load(os.path.join(models_dir2, model_filename), map_location='cpu'))
+
 	model2.eval()
 
 	y_pred = predict_ensemble(mel_list, test_file_idxs, model1, model2)
