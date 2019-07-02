@@ -1,7 +1,7 @@
 # DCASE 2019-task5
 This repository contains code to build models for [DCASE 2019 Challange-task5 (Urban sound tagging)](http://dcase.community/challenge2019/task-urban-sound-tagging). One of the submitted models got **3rd** place out of 22 systems competing (coarse-level prediction). Check [the results](http://dcase.community/challenge2019/task-urban-sound-tagging-results) out.
 
-* If you use this code for your research paper, please cite the following technical paper.
+* If you use this code for your research paper, please cite the following technical report.
 
 ```
 @techreport{Kim2019,
