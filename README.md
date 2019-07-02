@@ -1,5 +1,20 @@
 # DCASE 2019-task5
-This repository contains code to build models for [DCASE 2019 Challange-task5 (Urban sound tagging)](http://dcase.community/challenge2019/task-urban-sound-tagging).
+This repository contains code to build models for [DCASE 2019 Challange-task5 (Urban sound tagging)](http://dcase.community/challenge2019/task-urban-sound-tagging). One of the submitted models got **3rd** place out of 22 systems competing (coarse-level prediction). Check [the results](http://dcase.community/challenge2019/task-urban-sound-tagging-results) out.
+
+* If you use this code for your research paper, please cite the following technical paper.
+
+```
+@techreport{Kim2019,
+    Author = "Kim, Bongjun",
+    abstract = "This technical report describes sound classification models from our submissions for DCASE challenge 2019-task5. The task is to build a system to perform audio tagging on urban sound. The dataset has 23 fine-grained tags and 8 coarse-grained tags. In this report, we only present a model for coarse-grained tagging. Our model is a Convolutional Neural network (CNN)-based model which consists of 6 convolutional layers and 3 fully-connected layers. We apply transfer learning to the model training by utilizing VGGish model that has been pre-trained on a large scale of a dataset. We also apply an ensemble technique to boost the performance of a single model. We compare the performance of our models and the baseline approach on the provided validation dataset. The results show that our models outperform the baseline system.",
+    month = "September",
+    year = "2019",
+    title = "Convolutional Neural Networks with Transfer Learning for Urban Sound Tagging",
+    institution = "DCASE2019 Challenge"
+}
+```
+
+
 * Some scripts for manipulating the dataset and evaluating the model were taken from [the baseline code](https://github.com/sonyc-project/urban-sound-tagging-baseline) provided by the challenge organizers.
 * The feature extraction codes (`vggish_utils/`) are from the repository of [VGGish model](https://github.com/tensorflow/models/tree/master/research/audioset).
 
